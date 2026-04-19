@@ -66,13 +66,13 @@ Checklist:
 
 ## Build from source
 
-Requires Java 21 and Gradle 8.9+ installed locally (or just use the CI
+Requires Java 21 and Gradle 9.4.1+ installed locally (or just use the CI
 artifact from GitHub Actions).
 
 ```
 git clone https://github.com/beard500/void-orb.git
 cd void-orb
-python3 scripts/gen_textures.py    # regenerate PNGs from scripts (optional — checked in)
+python3 scripts/gen_textures.py    # regenerate PNGs (optional — checked in)
 gradle build                        # or ./gradlew build if you generated the wrapper
 ```
 
