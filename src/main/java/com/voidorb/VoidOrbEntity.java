@@ -5,6 +5,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
@@ -28,8 +29,8 @@ public final class VoidOrbEntity extends ThrownItemEntity implements PolymerEnti
         super(type, world);
     }
 
-    public VoidOrbEntity(World world, LivingEntity owner) {
-        super(VoidOrbMod.VOID_ORB_ENTITY, owner, world);
+    public VoidOrbEntity(World world, LivingEntity owner, ItemStack stack) {
+        super(VoidOrbMod.VOID_ORB_ENTITY, owner, world, stack);
     }
 
     @Override
@@ -46,7 +47,7 @@ public final class VoidOrbEntity extends ThrownItemEntity implements PolymerEnti
     protected void onCollision(HitResult hitResult) {
         super.onCollision(hitResult);
 
-        if (this.getWorld() instanceof ServerWorld serverWorld) {
+        if (this.world instanceof ServerWorld serverWorld) {
             serverWorld.spawnParticles(
                     ParticleTypes.PORTAL,
                     this.getX(), this.getY(), this.getZ(),

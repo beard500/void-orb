@@ -31,6 +31,9 @@ public final class VoidOrbMod implements ModInitializer {
                     .registryKey(VOID_ORB_ITEM_KEY)
     );
 
+    public static final RegistryKey<EntityType<?>> VOID_ORB_ENTITY_KEY =
+            RegistryKey.of(RegistryKeys.ENTITY_TYPE, VOID_ORB_ID);
+
     public static final EntityType<VoidOrbEntity> VOID_ORB_ENTITY = Registry.register(
             Registries.ENTITY_TYPE,
             VOID_ORB_ID,
@@ -38,7 +41,7 @@ public final class VoidOrbMod implements ModInitializer {
                     .dimensions(0.25f, 0.25f)
                     .maxTrackingRange(4)
                     .trackingTickInterval(10)
-                    .build(VOID_ORB_ID.toString())
+                    .build(VOID_ORB_ENTITY_KEY)
     );
 
     @Override

@@ -3,6 +3,7 @@ package com.voidorb;
 import eu.pb4.polymer.core.api.item.PolymerItem;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -30,7 +31,7 @@ public final class VoidOrbItem extends Item implements PolymerItem {
 
     @Override
     public ActionResult use(World world, PlayerEntity user, Hand hand) {
-        var stack = user.getStackInHand(hand);
+        ItemStack stack = user.getStackInHand(hand);
 
         world.playSound(
                 null,
@@ -41,11 +42,10 @@ public final class VoidOrbItem extends Item implements PolymerItem {
                 1.6f + world.getRandom().nextFloat() * 0.2f
         );
 
-        user.getItemCooldownManager().set(this, 10);
+        user.getItemCooldownManager().set(stack, 10);
 
-        if (!world.isClient) {
-            var orb = new VoidOrbEntity(world, user);
-            orb.setItem(stack);
+        if (!world.isClient()) {
+            VoidOrbEntity orb = new VoidOrbEntity(world, user, stack.copyWithCount(1));
             orb.setVelocity(user, user.getPitch(), user.getYaw(), 0.0f, 1.5f, 1.0f);
             world.spawnEntity(orb);
         }
@@ -59,12 +59,12 @@ public final class VoidOrbItem extends Item implements PolymerItem {
     }
 
     @Override
-    public Item getPolymerItem(net.minecraft.item.ItemStack stack, PacketContext context) {
+    public Item getPolymerItem(ItemStack stack, PacketContext context) {
         return Items.ENDER_PEARL;
     }
 
     @Override
-    public Identifier getPolymerItemModel(net.minecraft.item.ItemStack stack, PacketContext context) {
+    public Identifier getPolymerItemModel(ItemStack stack, PacketContext context) {
         return CLIENT_MODEL;
     }
 }
