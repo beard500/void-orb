@@ -10,6 +10,7 @@
   "entrypoints": {
     "main": ["com.voidorb.VoidOrbMod"]
   },
+  "accessWidener": "void_orb.accesswidener",
   "depends": {
     "fabricloader": ">=0.19.0",
     "minecraft": "~1.21.11",
