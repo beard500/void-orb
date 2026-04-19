@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "id": "void_orb",
+  "version": "${version}",
+  "name": "Void Orb",
+  "description": "A throwable void_orb — deep-black planet with a glowing Saturn-style ring. Server-side mod via Polymer; vanilla clients need no mods.",
+  "authors": ["beard500"],
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["com.voidorb.VoidOrbMod"]
+  },
+  "depends": {
+    "fabricloader": ">=0.19.0",
+    "minecraft": "~1.21.11",
+    "java": ">=21",
+    "fabric-api": "*",
+    "polymer-core": "*",
+    "polymer-resource-pack": "*"
+  }
+}
